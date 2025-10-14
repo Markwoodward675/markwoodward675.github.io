@@ -1,138 +1,158 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>MWardcoin | Home</title>
   <style>
-    /* General Styles */
-    body {
-      background-color: #0b0e17;
-      color: #fff;
-      font-family: "Segoe UI", Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
-
-    /* Navigation Bar */
-    nav {
-      background-color: #11131c;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 15px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 20px;
-      font-size: 18px;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: #f7931a; /* Bitcoin orange */
-    }
-
-    /* Hero Section */
-    header {
-      padding: 80px 20px;
-    }
-
-    header h1 {
-      font-size: 42px;
-      color: #f7931a;
-      margin-bottom: 10px;
-    }
-
-    header p {
-      font-size: 18px;
-      color: #d0d0d0;
-      max-width: 600px;
-      margin: 0 auto 30px;
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-block;
-      background-color: #f7931a;
-      color: #fff;
-      padding: 12px 30px;
-      border-radius: 30px;
-      font-size: 16px;
-      text-decoration: none;
-      transition: background 0.3s ease;
-    }
-
-    .btn:hover {
-      background-color: #ffae42;
-    }
-
-    /* Floating Bitcoin Background Animation */
-    .bitcoin {
-      position: fixed;
-      width: 40px;
-      height: 40px;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg') no-repeat center;
-      background-size: contain;
-      animation: float 15s infinite linear;
-      opacity: 0.2;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-50px) rotate(180deg); }
-      100% { transform: translateY(0) rotate(360deg); }
-    }
-
-    /* Footer */
-    footer {
-      background-color: #11131c;
-      padding: 20px 0;
-      color: #888;
-      font-size: 14px;
-      margin-top: 60px;
-    }
-
-    footer span {
-      color: #f7931a;
-    }
+    :root { --bg:#0b0e17; --panel:#11131c; --accent:#f7931a; --muted:#d0d0d0; }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--bg);color:#fff}
+    nav{background:var(--panel);display:flex;justify-content:center;gap:24px;padding:12px 0;position:sticky;top:0;z-index:100}
+    nav a{color:#fff;text-decoration:none;font-weight:600}
+    nav a:hover{color:var(--accent)}
+    .container{max-width:1100px;margin:28px auto;padding:0 16px}
+    .hero{display:flex;gap:24px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+    .brand {text-align:left}
+    .brand h1{margin:0;color:var(--accent);font-size:32px}
+    .brand p{color:var(--muted);margin-top:6px}
+    .actions{display:flex;gap:12px}
+    .btn{background:var(--accent);color:#111;border:none;padding:10px 18px;border-radius:999px;cursor:pointer;text-decoration:none;font-weight:700}
+    .panel{background:var(--panel);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.4)}
+    .price {font-size:28px;font-weight:700}
+    .small {color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:22px}
+    .portfolio {text-align:left}
+    input[type="number"],input[type="text"]{width:100%;padding:10px;border-radius:8px;border:none;background:#0f1324;color:#fff;margin-top:8px}
+    footer{margin-top:40px;background:var(--panel);padding:18px;text-align:center;color:#888}
+    /* floating bitcoin */
+    .coin{position:fixed;width:36px;height:36px;background:url('https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg') center/contain no-repeat;opacity:.12;pointer-events:none}
+    .coin.c1{top:10%;left:6%;animation:float1 12s linear infinite}
+    .coin.c2{top:75%;left:84%;animation:float2 18s linear infinite}
+    .coin.c3{top:40%;left:50%;animation:float3 16s linear infinite}
+    @keyframes float1{0%{transform:translateY(0)}50%{transform:translateY(-40px)}100%{transform:translateY(0)}}
+    @keyframes float2{0%{transform:translateY(0)}50%{transform:translateY(-70px)}100%{transform:translateY(0)}}
+    @keyframes float3{0%{transform:translateY(0)}50%{transform:translateY(-50px)}100%{transform:translateY(0)}}
+    @media(max-width:640px){.hero{flex-direction:column;align-items:flex-start}.brand h1{font-size:26px}}
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
+    <a href="buy.html">Buy</a>
+    <a href="sell.html">Sell</a>
   </nav>
 
-  <!-- Hero Section -->
-  <header>
-    <h1>Welcome to MWardcoin</h1>
-    <p>
-      The official platform by <strong>MarkWoodward675</strong>, empowering new investors 
-      and traders with insights, live data, and trusted resources in the world of crypto.
-    </p>
-    <a href="sell.html" class="btn">💰 Sell MWardcoin</a>
-  </header>
+  <div class="coin c1"></div><div class="coin c2"></div><div class="coin c3"></div>
 
-  <!-- Floating Bitcoin Icons -->
-  <div class="bitcoin" style="top:10%; left:10%; animation-delay:0s;"></div>
-  <div class="bitcoin" style="top:30%; left:70%; animation-delay:2s;"></div>
-  <div class="bitcoin" style="top:60%; left:40%; animation-delay:4s;"></div>
-  <div class="bitcoin" style="top:80%; left:20%; animation-delay:6s;"></div>
+  <div class="container">
+    <div class="hero">
+      <div class="brand">
+        <h1>MWardcoin</h1>
+        <p class="small">By MarkWoodward &amp; Sir Tom Jones — Transparent crypto tools & education</p>
+      </div>
 
-  <!-- Footer -->
-  <footer>
-    © 2025 <span>MWardcoin</span> — Created by MarkWoodward in collaboration with Sir Tom Jones.
-  </footer>
+      <div class="panel" style="min-width:220px;text-align:center">
+        <div class="small">Bitcoin (BTC) Price</div>
+        <div id="btcPrice" class="price">Loading…</div>
+        <div id="btcChange" class="small">—</div>
+        <div style="margin-top:12px">
+          <a class="btn" href="buy.html">Buy</a>
+          <a class="btn" href="sell.html">Sell</a>
+        </div>
+      </div>
+    </div>
 
+    <div class="grid">
+      <div class="panel">
+        <h3 style="margin:0 0 8px 0;color:var(--accent)">Portfolio Simulator</h3>
+        <div class="portfolio">
+          <label>Your BTC</label>
+          <input id="btcInput" type="number" step="0.0001" placeholder="e.g. 0.05">
+          <button class="btn" style="margin-top:10px;width:100%;" onclick="calcPortfolio()">Calculate Value</button>
+          <div id="portfolioValue" style="margin-top:12px;color:var(--muted)"></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3 style="margin:0 0 8px 0;color:var(--accent)">Live Chart (7d)</h3>
+        <canvas id="priceChart" style="width:100%;height:180px;background:#0b0e17;border-radius:8px"></canvas>
+        <div class="small" style="margin-top:8px">Data from CoinGecko</div>
+      </div>
+
+      <div class="panel">
+        <h3 style="margin:0 0 8px 0;color:var(--accent)">Quick Links</h3>
+        <p class="small">Get started with trusted partners:</p>
+        <p><a class="btn" href="https://www.coinbase.com" target="_blank">Open Coinbase</a></p>
+        <p><a class="btn" href="https://www.binance.com" target="_blank">Open Binance</a></p>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2025 <strong style="color:var(--accent)">MWardcoin</strong> — Created by MarkWoodward in collaboration with Sir Tom Jones.</footer>
+
+  <script>
+    // Fetch BTC price and 7-day market chart from CoinGecko
+    async function fetchPrice() {
+      try {
+        const p = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true');
+        const data = await p.json();
+        const price = data.bitcoin.usd;
+        const change = data.bitcoin.usd_24h_change;
+        document.getElementById('btcPrice').textContent = '$' + price.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+        document.getElementById('btcChange').textContent = '24h: ' + (change>=0?'+':'') + change.toFixed(2) + '%';
+      } catch(e){ console.error(e); document.getElementById('btcPrice').textContent='Error'; }
+    }
+
+    async function fetchChart() {
+      try {
+        const r = await fetch('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=7');
+        const d = await r.json();
+        const prices = d.prices.map(p=>({t:new Date(p[0]), v:p[1]}));
+        drawChart(prices);
+      } catch(e){ console.error(e); }
+    }
+
+    function calcPortfolio(){
+      const btc = parseFloat(document.getElementById('btcInput').value);
+      const priceText = document.getElementById('btcPrice').textContent.replace(/\$|,/g,'');
+      const price = parseFloat(priceText);
+      if(!btc || !price){ document.getElementById('portfolioValue').textContent='Enter BTC and wait for price'; return; }
+      const total = (btc*price).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+      document.getElementById('portfolioValue').textContent = 'Current value: $' + total;
+    }
+
+    // Minimal Chart using Canvas (no external libs)
+    function drawChart(points){
+      const canvas = document.getElementById('priceChart');
+      const ctx = canvas.getContext('2d');
+      // size
+      canvas.width = canvas.clientWidth * devicePixelRatio;
+      canvas.height = canvas.clientHeight * devicePixelRatio;
+      ctx.scale(devicePixelRatio, devicePixelRatio);
+      // clear
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      const w = canvas.clientWidth, h = canvas.clientHeight;
+      const vs = points.map(p=>p.v);
+      const min = Math.min(...vs), max = Math.max(...vs);
+      ctx.strokeStyle = '#f7931a';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      points.forEach((p,i)=>{
+        const x = (i/(points.length-1))*(w-20)+10;
+        const y = h-20 - ((p.v-min)/(max-min))*(h-40);
+        if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      });
+      ctx.stroke();
+    }
+
+    // Init
+    fetchPrice();
+    fetchChart();
+    setInterval(fetchPrice,60000);
+  </script>
 </body>
 </html>
+

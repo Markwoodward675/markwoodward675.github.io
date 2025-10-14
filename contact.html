@@ -1,83 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Contact | MWardcoin</title>
   <style>
-    body {
-      background-color: #0b0e17;
-      color: #fff;
-      font-family: "Segoe UI", Arial, sans-serif;
-      margin: 0;
-      text-align: center;
-    }
-    nav {
-      background-color: #11131c;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 15px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 20px;
-      font-size: 18px;
-      transition: color 0.3s ease;
-    }
-    nav a:hover { color: #f7931a; }
-    section {
-      max-width: 700px;
-      margin: 80px auto;
-      padding: 20px;
-    }
-    h1 { color: #f7931a; }
-    p { font-size: 18px; color: #ccc; }
-    .contact-box {
-      background: #11131c;
-      border-radius: 10px;
-      padding: 25px;
-      margin-top: 30px;
-    }
-    a {
-      color: #f7931a;
-      text-decoration: none;
-    }
-    a:hover { text-decoration: underline; }
-    footer {
-      background-color: #11131c;
-      padding: 20px 0;
-      color: #888;
-      font-size: 14px;
-      margin-top: 60px;
-    }
-    footer span { color: #f7931a; }
+    :root{--bg:#0b0e17;--panel:#11131c;--accent:#f7931a;--muted:#d0d0d0}
+    body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--bg);color:#fff}
+    nav{background:var(--panel);display:flex;justify-content:center;gap:18px;padding:12px;position:sticky;top:0}
+    nav a{color:#fff;text-decoration:none}
+    .hero{padding:48px 16px;text-align:center}
+    .container{max-width:900px;margin:0 auto;padding:0 16px}
+    .card{background:var(--panel);padding:20px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.4)}
+    a.link{color:var(--accent);text-decoration:none;font-weight:700}
+    .coin{position:fixed;width:36px;height:36px;background:url('https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg') center/contain no-repeat;opacity:.12;pointer-events:none}
+    .c1{top:8%;left:8%;animation:move 14s linear infinite} .c2{top:80%;left:78%;animation:move 18s linear infinite}
+    @keyframes move{0%{transform:translateY(0)}50%{transform:translateY(-40px)}100%{transform:translateY(0)}}
+    footer{background:var(--panel);padding:16px;text-align:center;color:#888;margin-top:28px}
   </style>
 </head>
 <body>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="sell.html">Sell</a>
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="buy.html">Buy</a><a href="sell.html">Sell</a>
   </nav>
 
-  <section>
-    <h1>Contact MWardcoin</h1>
-    <p>Have questions or inquiries? Reach out to us below 👇</p>
-    <div class="contact-box">
-      <p>📧 <a href="mailto:markwoodward.voiceofuk@gmail.com">markwoodward.voiceofuk@gmail.com</a></p>
-      <p>📧 <a href="mailto:tomjoneswoodward47@gmail.com">tomjoneswoodward47@gmail.com</a></p>
+  <div class="coin c1"></div><div class="coin c2"></div>
+
+  <div class="hero">
+    <h1 style="color:var(--accent)">Contact MWardcoin</h1>
+    <p style="color:var(--muted);max-width:760px;margin:8px auto">Questions? Partnership inquiries? Use the email addresses below or visit us at our London office.</p>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <h3>Contact Emails</h3>
+      <p>📧 <a class="link" href="mailto:markwoodward.voiceofuk@gmail.com">markwoodward.voiceofuk@gmail.com</a></p>
+      <p>📧 <a class="link" href="mailto:tomjoneswoodward47@gmail.com">tomjoneswoodward47@gmail.com</a></p>
+      <h3>Office</h3>
       <p>🏠 5 Ollgar Cl, London W12 ONF, United Kingdom</p>
     </div>
-  </section>
+  </div>
 
-  <footer>
-    © 2025 <span>MWardcoin</span> — Created by MarkWoodward in collaboration with Sir Tom Jones.
-  </footer>
+  <footer>© 2025 <strong style="color:var(--accent)">MWardcoin</strong> — Created by MarkWoodward in collaboration with Sir Tom Jones.</footer>
 </body>
 </html>

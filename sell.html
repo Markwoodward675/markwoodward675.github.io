@@ -1,218 +1,80 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Sell | MWardcoin</title>
   <style>
-    body {
-      background-color: #0b0e17;
-      color: #fff;
-      font-family: "Segoe UI", Arial, sans-serif;
-      margin: 0;
-      line-height: 1.6;
-    }
-
-    nav {
-      background-color: #11131c;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 15px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 20px;
-      font-size: 18px;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover { color: #f7931a; }
-
-    section {
-      max-width: 600px;
-      margin: 60px auto;
-      padding: 20px;
-      background-color: #11131c;
-      border-radius: 12px;
-      box-shadow: 0 0 12px rgba(247, 147, 26, 0.3);
-    }
-
-    h1 {
-      color: #f7931a;
-      text-align: center;
-    }
-
-    label {
-      display: block;
-      margin-top: 15px;
-      color: #ccc;
-      font-weight: bold;
-    }
-
-    input, textarea, select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: none;
-      border-radius: 6px;
-      background-color: #0f1324;
-      color: #fff;
-      font-size: 15px;
-    }
-
-    input:focus, textarea:focus {
-      outline: 2px solid #f7931a;
-    }
-
-    button {
-      background-color: #f7931a;
-      color: #fff;
-      border: none;
-      padding: 12px 20px;
-      font-size: 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 20px;
-      width: 100%;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover { background-color: #ff9f2a; }
-
-    .error {
-      color: #ff5252;
-      font-size: 14px;
-      margin-top: 5px;
-      display: none;
-    }
-
-    .success {
-      background-color: #0f1324;
-      color: #4CAF50;
-      border-left: 4px solid #4CAF50;
-      padding: 15px;
-      margin-top: 20px;
-      border-radius: 8px;
-      display: none;
-      text-align: center;
-      font-weight: bold;
-    }
-
-    footer {
-      background-color: #11131c;
-      padding: 20px 0;
-      color: #888;
-      font-size: 14px;
-      margin-top: 60px;
-      text-align: center;
-    }
-
-    footer span { color: #f7931a; }
+    :root{--bg:#0b0e17;--panel:#11131c;--accent:#f7931a;--muted:#d0d0d0}
+    body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--bg);color:#fff}
+    nav{background:var(--panel);display:flex;justify-content:center;padding:12px;position:sticky;top:0}
+    nav a{color:#fff;text-decoration:none}
+    .container{max-width:700px;margin:36px auto;padding:16px}
+    .card{background:var(--panel);padding:18px;border-radius:12px}
+    label{display:block;margin-top:12px;color:var(--muted);font-weight:600}
+    input,textarea{width:100%;padding:10px;border-radius:8px;border:none;background:#0f1324;color:#fff;margin-top:8px}
+    .btn{background:var(--accent);border:none;padding:12px;border-radius:8px;color:#111;font-weight:700;margin-top:14px;cursor:pointer;width:100%}
+    .error{color:#ff6b6b;display:none;margin-top:6px}
+    .success{color:#4caf50;display:none;margin-top:12px}
+    footer{background:var(--panel);padding:14px;text-align:center;color:#888;margin-top:28px}
   </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="sell.html">Sell</a>
-  </nav>
+  <nav><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="buy.html">Buy</a><a href="sell.html">Sell</a></nav>
 
-  <section>
-    <h1>Sell Your Bitcoin</h1>
-    <p style="text-align:center; color:#bbb;">Fill in the form below to request a sell transaction. Our team will verify your details before processing.</p>
+  <div class="container">
+    <div class="card">
+      <h2 style="color:var(--accent);margin:0">Submit Sell Request</h2>
+      <p style="color:var(--muted)">Complete the form — we'll verify and contact you with next steps.</p>
 
-    <form action="https://formsubmit.co/markwoodward.voiceofuk@gmail.com" method="POST">
-  <input type="hidden" name="_subject" value="New MWardcoin Sell Request!">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_template" value="table">
+      <form id="sellForm" action="https://formsubmit.co/markwoodward.voiceofuk@gmail.com" method="POST" onsubmit="return validateSell()">
+        <input type="hidden" name="_subject" value="MWardcoin Sell Request">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_cc" value="tomjoneswoodward47@gmail.com">
 
-  <label for="name">Full Name</label>
-  <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+        <label for="name">Full name</label>
+        <input id="name" name="name" type="text" required>
+        <div id="err-name" class="error">Please enter your name</div>
 
-  <label for="email">Email Address</label>
-  <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required>
+        <div id="err-email" class="error">Please enter a valid email</div>
 
-  <label for="wallet">Bitcoin Wallet Address</label>
-  <input type="text" id="wallet" name="wallet" placeholder="Enter your wallet address" required>
+        <label for="wallet">Bitcoin Wallet Address</label>
+        <input id="wallet" name="wallet" type="text" required>
+        <div id="err-wallet" class="error">Please enter a valid wallet address</div>
 
-  <label for="amount">Amount to Sell (BTC)</label>
-  <input type="number" id="amount" name="amount" placeholder="Enter amount in BTC" step="0.0001" min="0" required>
+        <label for="amount">Amount to sell (BTC)</label>
+        <input id="amount" name="amount" type="number" step="0.0001" min="0.0001" required>
+        <div id="err-amount" class="error">Enter amount &gt; 0</div>
 
-  <label for="note">Additional Notes (optional)</label>
-  <textarea id="note" name="note" rows="3" placeholder="Any special instructions..."></textarea>
+        <label for="note">Notes (optional)</label>
+        <textarea id="note" name="note" rows="3"></textarea>
 
-  <button type="submit">Submit Sell Request</button>
-</form>
+        <button class="btn" type="submit">Submit Sell Request</button>
+        <div id="sell-success" class="success">Request submitted — check your email (confirm FormSubmit once if needed).</div>
+      </form>
+    </div>
+  </div>
 
-  </section>
-
-  <footer>
-    © 2025 <span>MWardcoin</span> — Created by MarkWoodward in collaboration with Sir Tom Jones.
-  </footer>
+  <footer>© 2025 <strong style="color:var(--accent)">MWardcoin</strong></footer>
 
   <script>
-    const form = document.getElementById("sellForm");
-    const successMessage = document.getElementById("successMessage");
-
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      // Get form values
-      const name = document.getElementById("name");
-      const email = document.getElementById("email");
-      const wallet = document.getElementById("wallet");
-      const amount = document.getElementById("amount");
-
-      // Error fields
-      const nameError = document.getElementById("nameError");
-      const emailError = document.getElementById("emailError");
-      const walletError = document.getElementById("walletError");
-      const amountError = document.getElementById("amountError");
-
+    function validateSell(){
       let valid = true;
+      const name = document.getElementById('name'), email = document.getElementById('email'),
+            wallet = document.getElementById('wallet'), amount = document.getElementById('amount');
 
-      // Reset
-      [nameError, emailError, walletError, amountError].forEach(err => err.style.display = "none");
+      ['err-name','err-email','err-wallet','err-amount'].forEach(id=>document.getElementById(id).style.display='none');
 
-      // Name validation
-      if (name.value.trim() === "") {
-        nameError.style.display = "block";
-        valid = false;
-      }
+      if(!name.value.trim()){ document.getElementById('err-name').style.display='block'; valid=false;}
+      if(!/^[^ ]+@[^ ]+\.[a-z]{2,}$/i.test(email.value.trim())){ document.getElementById('err-email').style.display='block'; valid=false;}
+      if(wallet.value.trim().length < 20){ document.getElementById('err-wallet').style.display='block'; valid=false;}
+      if(!(parseFloat(amount.value) > 0)){ document.getElementById('err-amount').style.display='block'; valid=false;}
 
-      // Email validation
-      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-      if (!emailPattern.test(email.value.trim())) {
-        emailError.style.display = "block";
-        valid = false;
-      }
-
-      // Wallet validation
-      if (wallet.value.trim().length < 20) { // basic wallet format check
-        walletError.style.display = "block";
-        valid = false;
-      }
-
-      // Amount validation
-      if (amount.value <= 0 || amount.value === "") {
-        amountError.style.display = "block";
-        valid = false;
-      }
-
-      // Success message
-      if (valid) {
-        successMessage.style.display = "block";
-        form.reset();
-        setTimeout(() => successMessage.style.display = "none", 5000);
-      }
-    });
+      if(valid){ document.getElementById('sell-success').style.display='block'; return true; }
+      return false;
+    }
   </script>
 </body>
 </html>
