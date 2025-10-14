@@ -2,20 +2,114 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>My Bitcoin Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CryptoTracker</title>
+
+  <!-- 🎨 CSS (styles) go inside the <style> tag -->
   <style>
-    body { font-family: Arial, sans-serif; background:#0b1020; color:white; display:flex; justify-content:center; align-items:center; height:100vh; flex-direction:column; }
-    h1 { color:#f7931a; }
-    button { margin-top:10px; padding:10px 15px; border:none; border-radius:8px; background:#f7931a; color:white; font-size:16px; cursor:pointer; }
+    /* ---- Navbar ---- */
+    header {
+      width: 100%;
+      background: #111;
+      color: #f7931a;
+      padding: 10px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      margin: auto;
+    }
+    .menu {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+    .menu a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .menu a:hover {
+      color: #f7931a;
+    }
+
+    /* ---- Main content ---- */
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b1020;
+      color: white;
+      margin: 0;
+      padding-top: 80px; /* space for fixed header */
+      text-align: center;
+    }
+    .price-card {
+      background: #1a1f2b;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      display: inline-block;
+      margin-top: 40px;
+    }
+
+    footer {
+      margin-top: 80px;
+      background: #111;
+      color: #888;
+      padding: 15px;
+      text-align: center;
+      font-size: 14px;
+    }
   </style>
 </head>
-<body>
-  <h1>Bitcoin (BTC)</h1>
-  <h2 id="price">Loading...</h2>
-  <p id="change">Updating...</p>
-  <button onclick="getPrice()">Refresh</button>
 
+<body>
+  <!-- 🧭 Header -->
+  <header>
+    <nav>
+      <h1 class="logo">MarkWoodwardcoin</h1>
+      <ul class="menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#prices">Prices</a></li>
+        <li><a href="https://www.binance.com" target="_blank">Buy Bitcoin</a></li>
+        <li><a href="https://www.coindesk.com" target="_blank">News</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 💰 Price section -->
+  <section id="prices" class="price-card">
+    <h2>Bitcoin (BTC)</h2>
+    <h3 id="price">Loading...</h3>
+    <p id="change">Updating...</p>
+    <button onclick="getPrice()">Refresh</button>
+    <button onclick="sellBitcoin()">Sell</button>
+  </section>
+
+  <!-- 📊 Portfolio simulator -->
+  <div id="portfolio" class="price-card">
+    <h3>Portfolio Simulator</h3>
+    <label>My BTC: 
+      <input type="number" id="btcInput" placeholder="e.g. 0.05">
+    </label>
+    <button onclick="calcValue()">Calculate Value</button>
+    <p id="portfolioValue"></p>
+  </div>
+
+  <!-- 👣 Footer -->
+  <footer>
+    <p>© 2025 CryptoTracker | Created by T-Jagaz</p>
+  </footer>
+
+  <!-- ⚙️ JavaScript (always near the bottom, before </body>) -->
   <script>
     async function getPrice() {
       const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true');
@@ -25,8 +119,24 @@
       document.getElementById('price').textContent = '$' + price.toLocaleString();
       document.getElementById('change').textContent = '24h change: ' + change + '%';
     }
+
+    function calcValue() {
+      const btc = parseFloat(document.getElementById('btcInput').value);
+      const priceText = document.getElementById('price').textContent.replace('$', '').replace(',', '');
+      const price = parseFloat(priceText);
+      if (!btc || isNaN(price)) return;
+      const total = btc * price;
+      document.getElementById('portfolioValue').textContent =
+        'Your Bitcoin value: $' + total.toLocaleString(undefined, {minimumFractionDigits:2});
+    }
+    function sellBitcoin() {
+  alert("To sell your Bitcoin safely, visit Binance or Coinbase. Your browser will now open Binance.");
+  window.open("https://www.binance.com/en/trade/BTC_USDT", "_blank");
+  }
+
+    // run automatically on load
     getPrice();
-    setInterval(getPrice, 60000); // refresh every 1 minute
+    setInterval(getPrice, 60000); // update every minute
   </script>
 </body>
 </html>
