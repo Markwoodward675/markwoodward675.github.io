@@ -10,8 +10,9 @@
       color: #fff;
       font-family: "Segoe UI", Arial, sans-serif;
       margin: 0;
-      text-align: center;
+      line-height: 1.6;
     }
+
     nav {
       background-color: #11131c;
       display: flex;
@@ -22,6 +23,7 @@
       top: 0;
       z-index: 100;
     }
+
     nav a {
       color: #fff;
       text-decoration: none;
@@ -29,50 +31,88 @@
       font-size: 18px;
       transition: color 0.3s ease;
     }
+
     nav a:hover { color: #f7931a; }
+
     section {
-      max-width: 700px;
-      margin: 80px auto;
+      max-width: 600px;
+      margin: 60px auto;
       padding: 20px;
+      background-color: #11131c;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(247, 147, 26, 0.3);
     }
-    h1 { color: #f7931a; }
-    .sell-box {
-      background: #11131c;
-      border-radius: 10px;
-      padding: 30px;
-      margin-top: 30px;
+
+    h1 {
+      color: #f7931a;
+      text-align: center;
     }
-    label, input, button {
+
+    label {
       display: block;
-      margin: 10px auto;
-      font-size: 16px;
+      margin-top: 15px;
+      color: #ccc;
+      font-weight: bold;
     }
-    input {
-      padding: 8px;
-      border-radius: 5px;
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
       border: none;
-      width: 60%;
+      border-radius: 6px;
+      background-color: #0f1324;
+      color: #fff;
+      font-size: 15px;
     }
+
+    input:focus, textarea:focus {
+      outline: 2px solid #f7931a;
+    }
+
     button {
       background-color: #f7931a;
-      color: white;
+      color: #fff;
       border: none;
-      border-radius: 25px;
-      padding: 10px 25px;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 8px;
       cursor: pointer;
+      margin-top: 20px;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover { background-color: #ff9f2a; }
+
+    .error {
+      color: #ff5252;
+      font-size: 14px;
+      margin-top: 5px;
+      display: none;
+    }
+
+    .success {
+      background-color: #0f1324;
+      color: #4CAF50;
+      border-left: 4px solid #4CAF50;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 8px;
+      display: none;
+      text-align: center;
       font-weight: bold;
-      margin-top: 15px;
     }
-    button:hover {
-      background-color: #ffae42;
-    }
+
     footer {
       background-color: #11131c;
       padding: 20px 0;
       color: #888;
       font-size: 14px;
       margin-top: 60px;
+      text-align: center;
     }
+
     footer span { color: #f7931a; }
   </style>
 </head>
@@ -85,24 +125,94 @@
   </nav>
 
   <section>
-    <h1>Sell MWardcoin</h1>
-    <p>Convert your MWardcoin safely and instantly. Fill in the form below 👇</p>
+    <h1>Sell Your Bitcoin</h1>
+    <p style="text-align:center; color:#bbb;">Fill in the form below to request a sell transaction. Our team will verify your details before processing.</p>
 
-    <div class="sell-box">
-      <label for="amount">Enter Amount (MWC):</label>
-      <input type="number" id="amount" placeholder="e.g. 50" />
+    <form id="sellForm" novalidate>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your full name">
+      <div id="nameError" class="error">Please enter your name.</div>
 
-      <label for="wallet">Your Wallet Address:</label>
-      <input type="text" id="wallet" placeholder="Enter your wallet address" />
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email">
+      <div id="emailError" class="error">Please enter a valid email address.</div>
 
-      <button onclick="alert('Thank you! Your sell request has been submitted.')">
-        Submit Sell Request
-      </button>
-    </div>
+      <label for="wallet">Bitcoin Wallet Address</label>
+      <input type="text" id="wallet" name="wallet" placeholder="Enter your wallet address">
+      <div id="walletError" class="error">Please enter your Bitcoin wallet address.</div>
+
+      <label for="amount">Amount to Sell (BTC)</label>
+      <input type="number" id="amount" name="amount" placeholder="Enter amount in BTC" step="0.0001" min="0">
+      <div id="amountError" class="error">Please enter a valid amount (greater than 0).</div>
+
+      <label for="note">Additional Notes (optional)</label>
+      <textarea id="note" name="note" rows="3" placeholder="Any special instructions..."></textarea>
+
+      <button type="submit">Submit Sell Request</button>
+      <div class="success" id="successMessage">✅ Your sell request has been submitted successfully!</div>
+    </form>
   </section>
 
   <footer>
     © 2025 <span>MWardcoin</span> — Created by MarkWoodward in collaboration with Sir Tom Jones.
   </footer>
+
+  <script>
+    const form = document.getElementById("sellForm");
+    const successMessage = document.getElementById("successMessage");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      // Get form values
+      const name = document.getElementById("name");
+      const email = document.getElementById("email");
+      const wallet = document.getElementById("wallet");
+      const amount = document.getElementById("amount");
+
+      // Error fields
+      const nameError = document.getElementById("nameError");
+      const emailError = document.getElementById("emailError");
+      const walletError = document.getElementById("walletError");
+      const amountError = document.getElementById("amountError");
+
+      let valid = true;
+
+      // Reset
+      [nameError, emailError, walletError, amountError].forEach(err => err.style.display = "none");
+
+      // Name validation
+      if (name.value.trim() === "") {
+        nameError.style.display = "block";
+        valid = false;
+      }
+
+      // Email validation
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (!emailPattern.test(email.value.trim())) {
+        emailError.style.display = "block";
+        valid = false;
+      }
+
+      // Wallet validation
+      if (wallet.value.trim().length < 20) { // basic wallet format check
+        walletError.style.display = "block";
+        valid = false;
+      }
+
+      // Amount validation
+      if (amount.value <= 0 || amount.value === "") {
+        amountError.style.display = "block";
+        valid = false;
+      }
+
+      // Success message
+      if (valid) {
+        successMessage.style.display = "block";
+        form.reset();
+        setTimeout(() => successMessage.style.display = "none", 5000);
+      }
+    });
+  </script>
 </body>
 </html>
