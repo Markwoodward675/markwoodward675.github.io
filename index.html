@@ -17,8 +17,12 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000; /* ensures header stays above content */
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out; /* 👈 added */
+background: rgba(17, 17, 17, 0.95);
+backdrop-filter: blur(6px);
 }
+
 
 nav {
   display: flex;
@@ -87,11 +91,6 @@ nav {
 <body>
   <!-- 🧭 Header -->
   <header>
-<section id="home" style="padding: 80px 20px;">
-  <h2>Welcome to MWardcoin</h2>
-  <p>Welcome to the Future of Finance.
-Stay ahead with real-time Bitcoin updates, expert insights, and trusted investment strategies. Whether you’re a seasoned investor or just getting started, we bring you the knowledge and tools to grow your crypto portfolio with confidence.</p>
-</section>
     <nav>
       <h1 class="logo">MarkWoodwardcoin</h1>
       <ul class="menu">
@@ -102,8 +101,12 @@ Stay ahead with real-time Bitcoin updates, expert insights, and trusted investme
         <li><a href="#about">About</a></li>
       </ul>
     </nav>
-
-  </header>
+  <section id="home" style="padding: 80px 20px;">
+  <h2>Welcome to MWardcoin</h2>
+  <p>Welcome to the Future of Finance.
+Stay ahead with real-time Bitcoin updates, expert insights, and trusted investment strategies. Whether you’re a seasoned investor or just getting started, we bring you the knowledge and tools to grow your crypto portfolio with confidence.</p>
+</section>
+</header>
 
   <!-- 💰 Price section -->
   <section id="prices" class="price-card">
@@ -162,6 +165,20 @@ Stay ahead with real-time Bitcoin updates, expert insights, and trusted investme
     // run automatically on load
     getPrice();
     setInterval(getPrice, 60000); // update every minute
-  </script>
+  // Hide header when scrolling down, show when scrolling up
+let lastScrollY = window.scrollY;
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > lastScrollY) {
+    // scrolling down
+    header.style.transform = "translateY(-100%)";
+  } else {
+    // scrolling up
+    header.style.transform = "translateY(0)";
+  }
+  lastScrollY = window.scrollY;
+});
+</script>
 </body>
 </html>
