@@ -1,80 +1,53 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sell | MWardcoin</title>
-  <style>
-    :root{--bg:#0b0e17;--panel:#11131c;--accent:#f7931a;--muted:#d0d0d0}
-    body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--bg);color:#fff}
-    nav{background:var(--panel);display:flex;justify-content:center;padding:12px;position:sticky;top:0}
-    nav a{color:#fff;text-decoration:none}
-    .container{max-width:700px;margin:36px auto;padding:16px}
-    .card{background:var(--panel);padding:18px;border-radius:12px}
-    label{display:block;margin-top:12px;color:var(--muted);font-weight:600}
-    input,textarea{width:100%;padding:10px;border-radius:8px;border:none;background:#0f1324;color:#fff;margin-top:8px}
-    .btn{background:var(--accent);border:none;padding:12px;border-radius:8px;color:#111;font-weight:700;margin-top:14px;cursor:pointer;width:100%}
-    .error{color:#ff6b6b;display:none;margin-top:6px}
-    .success{color:#4caf50;display:none;margin-top:12px}
-    footer{background:var(--panel);padding:14px;text-align:center;color:#888;margin-top:28px}
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sell Cryptocurrency | MWardcoin</title>
+  <link rel="icon" type="image/png" href="assets/bitcoin-icon.png" />
+  <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
-  <nav><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="buy.html">Buy</a><a href="sell.html">Sell</a></nav>
+  <header>
+    <h1 class="logo">₿ MWardcoin</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="buy.html">Buy</a>
+      <a href="sell.html">Sell</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
 
-  <div class="container">
-    <div class="card">
-      <h2 style="color:var(--accent);margin:0">Submit Sell Request</h2>
-      <p style="color:var(--muted)">Complete the form — we'll verify and contact you with next steps.</p>
-
-      <form id="sellForm" action="https://formsubmit.co/markwoodward.voiceofuk@gmail.com" method="POST" onsubmit="return validateSell()">
-        <input type="hidden" name="_subject" value="MWardcoin Sell Request">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
+  <main>
+    <section class="form-section">
+      <h2>Sell Cryptocurrency</h2>
+      <p>Submit your request to sell crypto securely through MWardcoin.</p>
+      <form action="https://formsubmit.co/markwoodward.voiceofuk@gmail.com" method="POST">
         <input type="hidden" name="_cc" value="tomjoneswoodward47@gmail.com">
-
-        <label for="name">Full name</label>
-        <input id="name" name="name" type="text" required>
-        <div id="err-name" class="error">Please enter your name</div>
-
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" required>
-        <div id="err-email" class="error">Please enter a valid email</div>
-
-        <label for="wallet">Bitcoin Wallet Address</label>
-        <input id="wallet" name="wallet" type="text" required>
-        <div id="err-wallet" class="error">Please enter a valid wallet address</div>
-
-        <label for="amount">Amount to sell (BTC)</label>
-        <input id="amount" name="amount" type="number" step="0.0001" min="0.0001" required>
-        <div id="err-amount" class="error">Enter amount &gt; 0</div>
-
-        <label for="note">Notes (optional)</label>
-        <textarea id="note" name="note" rows="3"></textarea>
-
-        <button class="btn" type="submit">Submit Sell Request</button>
-        <div id="sell-success" class="success">Request submitted — check your email (confirm FormSubmit once if needed).</div>
+        <label>Full Name:</label>
+        <input type="text" name="Name" required>
+        <label>Email Address:</label>
+        <input type="email" name="Email" required>
+        <label>Country:</label>
+        <input type="text" name="Country" required>
+        <label>Cryptocurrency:</label>
+        <select name="Crypto Type">
+          <option>Bitcoin (BTC)</option>
+          <option>Ethereum (ETH)</option>
+          <option>Binance Coin (BNB)</option>
+          <option>Dogecoin (DOGE)</option>
+          <option>Tether (USDT)</option>
+        </select>
+        <label>Amount to Sell:</label>
+        <input type="number" name="Amount" required>
+        <button type="submit" class="btn">Submit Sell Request</button>
       </form>
-    </div>
-  </div>
+    </section>
+  </main>
 
-  <footer>© 2025 <strong style="color:var(--accent)">MWardcoin</strong></footer>
-
-  <script>
-    function validateSell(){
-      let valid = true;
-      const name = document.getElementById('name'), email = document.getElementById('email'),
-            wallet = document.getElementById('wallet'), amount = document.getElementById('amount');
-
-      ['err-name','err-email','err-wallet','err-amount'].forEach(id=>document.getElementById(id).style.display='none');
-
-      if(!name.value.trim()){ document.getElementById('err-name').style.display='block'; valid=false;}
-      if(!/^[^ ]+@[^ ]+\.[a-z]{2,}$/i.test(email.value.trim())){ document.getElementById('err-email').style.display='block'; valid=false;}
-      if(wallet.value.trim().length < 20){ document.getElementById('err-wallet').style.display='block'; valid=false;}
-      if(!(parseFloat(amount.value) > 0)){ document.getElementById('err-amount').style.display='block'; valid=false;}
-
-      if(valid){ document.getElementById('sell-success').style.display='block'; return true; }
-      return false;
-    }
-  </script>
+  <footer>
+    <p>© 2025 MWardcoin — Created by MarkWoodward in collaboration with Sir Tom Jones.</p>
+  </footer>
 </body>
 </html>

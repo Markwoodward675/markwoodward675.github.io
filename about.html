@@ -1,99 +1,75 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About | MWardcoin</title>
-  <style>
-    :root{--bg:#0b0e17;--panel:#11131c;--accent:#f7931a;--muted:#d0d0d0}
-    body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--bg);color:#fff}
-    nav{background:var(--panel);display:flex;justify-content:center;gap:18px;padding:12px;position:sticky;top:0}
-    nav a{color:#fff;text-decoration:none}
-    header{padding:48px 16px;text-align:center}
-    header h1{color:var(--accent);margin:0 0 8px;font-size:32px}
-    .container{max-width:1000px;margin:0 auto;padding:0 16px}
-    .lead{color:var(--muted);max-width:860px;margin:12px auto 30px}
-    .testimonial-fade{position:relative;height:220px;max-width:700px;margin:0 auto 24px}
-    .testimonial{position:absolute;left:0;right:0;padding:20px;border-radius:12px;background:var(--panel);opacity:0;transition:opacity 1.1s ease}
-    .testimonial.active{opacity:1}
-    .rating{color:gold;margin-bottom:8px}
-    .reviewer{color:var(--accent);font-weight:700;margin-top:10px;display:block}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:28px}
-    .card{background:var(--panel);padding:18px;border-radius:10px}
-    footer{background:var(--panel);padding:16px;text-align:center;color:#888;margin-top:36px}
-  </style>
+  <link rel="icon" type="image/png" href="assets/bitcoin-icon.png" />
+  <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
-  <nav>
-    <a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="buy.html">Buy</a><a href="sell.html">Sell</a>
-  </nav>
-
   <header>
-    <h1>About MWardcoin</h1>
-    <p class="lead">MWardcoin — built by MarkWoodward with Sir Tom Jones — makes crypto approachable, transparent, and secure. We combine real-time data, clear education, and practical tools so users trade confidently.</p>
+    <h1 class="logo">₿ MWardcoin</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="buy.html">Buy</a>
+      <a href="sell.html">Sell</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </header>
 
-  <div class="container">
-    <section>
-      <h2 style="color:var(--accent);text-align:center">What Our Users Say</h2>
+  <main>
+    <section class="about">
+      <h2>About MWardcoin</h2>
+      <p>
+        MWardcoin was established with one mission — to simplify cryptocurrency investments and trading for everyone.
+        Our platform combines financial expertise, security, and real-time data to deliver a transparent and reliable
+        crypto experience. With years of industry experience, our founders Mark Woodward and Sir Tom Jones have built a
+        trusted brand that helps investors make informed decisions.
+      </p>
+      <p>
+        We provide accurate market insights, tools for smart trading, and round-the-clock support to ensure a smooth
+        investment journey for all our users. Whether you’re exploring Bitcoin, Ethereum, Binance Coin, or other
+        emerging digital assets — MWardcoin offers the right path forward.
+      </p>
+    </section>
 
-      <div class="testimonial-fade" id="fadeArea">
-        <div class="testimonial active">
-          <div class="rating">★★★★★</div>
-          <div>“MWardcoin made crypto simple. I made my first trade with confidence.”</div>
-          <span class="reviewer">— Amelia Roberts (Verified)</span>
-        </div>
-
+    <section class="testimonials">
+      <h2>Verified Testimonials</h2>
+      <div class="testimonial-carousel">
         <div class="testimonial">
-          <div class="rating">★★★★★</div>
-          <div>“Clear guides, transparent fees, and excellent support.”</div>
-          <span class="reviewer">— David Mendez (Verified)</span>
+          <p>“MWardcoin helped me get started with Bitcoin confidently. Their platform is seamless and transparent.”</p>
+          <span>★★★★★ – Sarah Johnson</span>
         </div>
-
         <div class="testimonial">
-          <div class="rating">★★★★☆</div>
-          <div>“Great educational content and daily insights.”</div>
-          <span class="reviewer">— Sophia Green (Verified)</span>
+          <p>“Best crypto platform I’ve used. Fast updates and secure transactions every time.”</p>
+          <span>★★★★★ – James Carter</span>
         </div>
-
         <div class="testimonial">
-          <div class="rating">★★★★★</div>
-          <div>“Fast transactions and responsive customer service.”</div>
-          <span class="reviewer">— Richard Owens (Verified)</span>
+          <p>“Professional and trustworthy team. MWardcoin really stands out in terms of customer support.”</p>
+          <span>★★★★☆ – Lucy Chen</span>
         </div>
-
         <div class="testimonial">
-          <div class="rating">★★★★★</div>
-          <div>“Reliable, secure, and beginner-friendly.”</div>
-          <span class="reviewer">— Sarah Mitchell (Verified)</span>
+          <p>“The live price dashboard and instant updates make investing much easier.”</p>
+          <span>★★★★★ – Michael Thompson</span>
         </div>
-      </div>
-
-      <div class="grid">
-        <div class="card"><div class="rating">★★★★★</div><div>“Made my first sale smooth and safe.”</div><div class="reviewer">— Emma Lewis</div></div>
-        <div class="card"><div class="rating">★★★★☆</div><div>“Excellent market updates and trustable data.”</div><div class="reviewer">— Chris Johnson</div></div>
-        <div class="card"><div class="rating">★★★★★</div><div>“Great UI and consistent performance.”</div><div class="reviewer">— Lily Parker</div></div>
-        <div class="card"><div class="rating">★★★★★</div><div>“I recommended MWardcoin to my network.”</div><div class="reviewer">— Robert Evans</div></div>
-        <div class="card"><div class="rating">★★★★★</div><div>“The best platform for learning crypto basics.”</div><div class="reviewer">— Daniel Brooks</div></div>
-        <div class="card"><div class="rating">★★★★☆</div><div>“Friendly team and professional guidance.”</div><div class="reviewer">— Olivia Wright</div></div>
       </div>
     </section>
-  </div>
+  </main>
 
-  <footer>© 2025 <strong style="color:var(--accent)">MWardcoin</strong> — Created by MarkWoodward in collaboration with Sir Tom Jones.</footer>
+  <footer>
+    <p>© 2025 MWardcoin — Created by MarkWoodward in collaboration with Sir Tom Jones.</p>
+  </footer>
 
   <script>
-    // Fade carousel with pause on hover
-    const items = document.querySelectorAll('.testimonial');
-    let i = 0;
-    let timer = setInterval(next,5000);
-    function next(){
-      items[i].classList.remove('active');
-      i = (i+1) % items.length;
-      items[i].classList.add('active');
-    }
-    const fadeArea = document.getElementById('fadeArea');
-    fadeArea.addEventListener('mouseenter', ()=> clearInterval(timer));
-    fadeArea.addEventListener('mouseleave', ()=> timer = setInterval(next,5000));
+    const carousel = document.querySelector('.testimonial-carousel');
+    let rotating = true;
+    carousel.addEventListener('mouseover', () => rotating = false);
+    carousel.addEventListener('mouseleave', () => rotating = true);
+    setInterval(() => {
+      if (rotating) carousel.appendChild(carousel.firstElementChild);
+    }, 4000);
   </script>
 </body>
 </html>
