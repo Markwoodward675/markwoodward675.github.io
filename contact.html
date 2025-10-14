@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Bitcoin Updates & Investments</title>
+
+  <style>
+    /* === BASE STYLING === */
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #000;
+      color: #eaeaea;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* === FLOATING BITCOINS === */
+    .floating-bitcoin {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .floating-bitcoin span {
+      position: absolute;
+      font-size: 2em;
+      color: orange;
+      opacity: 0.7;
+      animation: floatRandom 18s linear infinite;
+    }
+
+    @keyframes floatRandom {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0.4;
+      }
+      25% {
+        transform: translate(50px, -80px) rotate(90deg);
+        opacity: 0.8;
+      }
+      50% {
+        transform: translate(-70px, 60px) rotate(180deg);
+        opacity: 0.6;
+      }
+      75% {
+        transform: translate(100px, 100px) rotate(270deg);
+        opacity: 0.9;
+      }
+      100% {
+        transform: translate(-50px, -100px) rotate(360deg);
+        opacity: 0.5;
+      }
+    }
+
+    /* === CONTACT CONTAINER === */
+    .contact-container {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 80px auto;
+      background: rgba(20, 20, 20, 0.9);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 0 30px rgba(255, 140, 0, 0.2);
+    }
+
+    h1 {
+      text-align: center;
+      color: #f7931a;
+      font-size: 2.4em;
+      margin-bottom: 15px;
+    }
+
+    p {
+      text-align: center;
+      font-size: 1.1em;
+      color: #cccccc;
+      margin-bottom: 30px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: #111;
+      padding: 18px 20px;
+      border-radius: 12px;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .contact-item:hover {
+      background: #1c1c1c;
+      transform: scale(1.03);
+    }
+
+    .icon {
+      font-size: 1.6em;
+      color: #f7931a;
+    }
+
+    a {
+      color: #f7931a;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      color: #ffd480;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #999;
+      margin-top: 40px;
+    }
+  </style>
+
+  <script src="https://kit.fontawesome.com/a2d9d6a1a8.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <!-- FLOATING BITCOINS -->
+  <div class="floating-bitcoin">
+    <span style="left:5%; top:10%; animation-delay:0s;">🪙</span>
+    <span style="left:20%; top:80%; animation-delay:3s;">₿</span>
+    <span style="left:40%; top:30%; animation-delay:6s;">🟠</span>
+    <span style="left:60%; top:70%; animation-delay:1s;">🪙</span>
+    <span style="left:80%; top:20%; animation-delay:4s;">₿</span>
+    <span style="left:90%; top:60%; animation-delay:2s;">🟠</span>
+    <span style="left:10%; top:50%; animation-delay:5s;">🪙</span>
+  </div>
+
+  <!-- CONTACT SECTION -->
+  <div class="contact-container">
+    <h1>📞 Contact Us</h1>
+    <p>💬 We’re here to assist you with inquiries, partnerships, or investment guidance.<br>
+    Reach out to us through any of the channels below — we’ll respond promptly ⚡</p>
+
+    <div class="contact-info">
+      <div class="contact-item">
+        <i class="fas fa-envelope icon"></i>
+        <div>
+          <p>✉️ <a href="mailto:markwoodward.voiceofuk@gmail.com">markwoodward.voiceofuk@gmail.com</a></p>
+          <p>📧 <a href="mailto:tomjoneswoodward47@gmail.com">tomjoneswoodward47@gmail.com</a></p>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <i class="fas fa-map-marker-alt icon"></i>
+        <div>
+          <p>📍 5 Ollgar CL, London W12 ONF, United Kingdom 🇬🇧</p>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <i class="fas fa-clock icon"></i>
+        <div>
+          <p>🕒 <strong>Business Hours:</strong><br>
+          Monday – Friday: 9:00 AM – 6:00 PM (GMT)<br>
+          Saturday – Sunday: Closed 📴</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      © 2025 <span style="color:#f7931a;">Bitcoin Updates & Investments</span> 💰 | All Rights Reserved.
+    </div>
+  </div>
+
+</body>
+</html>
