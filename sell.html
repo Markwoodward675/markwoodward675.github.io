@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | MWardcoin</title>
+  <title>Sell | MWardcoin</title>
   <style>
     body {
       background-color: #0b0e17;
@@ -36,18 +36,36 @@
       padding: 20px;
     }
     h1 { color: #f7931a; }
-    p { font-size: 18px; color: #ccc; }
-    .contact-box {
+    .sell-box {
       background: #11131c;
       border-radius: 10px;
-      padding: 25px;
+      padding: 30px;
       margin-top: 30px;
     }
-    a {
-      color: #f7931a;
-      text-decoration: none;
+    label, input, button {
+      display: block;
+      margin: 10px auto;
+      font-size: 16px;
     }
-    a:hover { text-decoration: underline; }
+    input {
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+      width: 60%;
+    }
+    button {
+      background-color: #f7931a;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 25px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+    button:hover {
+      background-color: #ffae42;
+    }
     footer {
       background-color: #11131c;
       padding: 20px 0;
@@ -67,12 +85,19 @@
   </nav>
 
   <section>
-    <h1>Contact MWardcoin</h1>
-    <p>Have questions or inquiries? Reach out to us below 👇</p>
-    <div class="contact-box">
-      <p>📧 <a href="mailto:markwoodward.voiceofuk@gmail.com">markwoodward.voiceofuk@gmail.com</a></p>
-      <p>📧 <a href="mailto:tomjoneswoodward47@gmail.com">tomjoneswoodward47@gmail.com</a></p>
-      <p>🏠 5 Ollgar Cl, London W12 ONF, United Kingdom</p>
+    <h1>Sell MWardcoin</h1>
+    <p>Convert your MWardcoin safely and instantly. Fill in the form below 👇</p>
+
+    <div class="sell-box">
+      <label for="amount">Enter Amount (MWC):</label>
+      <input type="number" id="amount" placeholder="e.g. 50" />
+
+      <label for="wallet">Your Wallet Address:</label>
+      <input type="text" id="wallet" placeholder="Enter your wallet address" />
+
+      <button onclick="alert('Thank you! Your sell request has been submitted.')">
+        Submit Sell Request
+      </button>
     </div>
   </section>
 
