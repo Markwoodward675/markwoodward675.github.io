@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About | MWardcoin</title>
   <style>
-    /* General Page Style */
     body {
       background-color: #0b0e17;
       color: #fff;
@@ -38,87 +35,122 @@
 
     nav a:hover { color: #f7931a; }
 
-    section {
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 20px;
-      text-align: left;
-    }
-
-    h1, h2 {
-      color: #f7931a;
+    header {
       text-align: center;
+      padding: 50px 20px 20px;
     }
 
-    p {
-      font-size: 17px;
-      color: #d0d0d0;
+    header h1 {
+      font-size: 2.4rem;
+      color: #f7931a;
       margin-bottom: 15px;
     }
 
-    ul {
-      list-style-type: none;
-      padding: 0;
+    header p {
+      max-width: 750px;
+      margin: 0 auto;
+      color: #bbb;
+      font-size: 1.1rem;
+    }
+
+    section.about {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
       text-align: center;
     }
 
-    ul li {
-      margin: 10px 0;
-      font-size: 17px;
-      color: #ccc;
+    section.about h2 {
+      color: #f7931a;
+      margin-bottom: 15px;
     }
 
-    ul li strong { color: #f7931a; }
+    section.about p {
+      color: #ddd;
+      margin-bottom: 30px;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
 
-    /* Testimonials */
-    .testimonials {
-      margin-top: 60px;
-      background-color: #11131c;
-      padding: 40px 20px;
-      border-radius: 12px;
-      text-align: center;
+    /* TESTIMONIALS */
+    .testimonial-wrapper {
       overflow: hidden;
+      perspective: 1000px;
+    }
+
+    .testimonial-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 25px;
       position: relative;
+      height: 260px;
+      margin-top: 30px;
+      animation: spin 25s infinite linear;
+      transform-style: preserve-3d;
+    }
+
+    .testimonial-container:hover {
+      animation-play-state: paused; /* 🟡 Pauses spin on hover */
+    }
+
+    @keyframes spin {
+      0% { transform: rotateY(0deg); }
+      100% { transform: rotateY(360deg); }
     }
 
     .testimonial {
-      background: #0f1324;
-      border-left: 4px solid #f7931a;
-      padding: 25px;
-      margin: 20px auto;
-      border-radius: 10px;
-      max-width: 700px;
-      box-shadow: 0 0 15px rgba(247, 147, 26, 0.3);
-      display: none;
-      animation: fadeIn 1.5s ease forwards;
+      min-width: 320px;
+      max-width: 340px;
+      padding: 20px;
+      background-color: #11131c;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(247,147,26,0.3);
+      text-align: left;
+      transform: rotateY(0deg);
     }
 
-    .testimonial.active {
-      display: block;
+    .testimonial p {
+      color: #ccc;
+      margin-bottom: 10px;
     }
 
-    .testimonial strong {
-      display: block;
-      margin-top: 10px;
+    .reviewer {
+      font-weight: bold;
       color: #f7931a;
-      font-size: 16px;
     }
 
-    .verified {
-      color: #4CAF50;
-      font-size: 14px;
-      margin-left: 5px;
-    }
-
-    .stars {
-      color: #f7b731;
-      margin-top: 5px;
+    .rating {
+      color: gold;
       font-size: 18px;
+      margin-bottom: 8px;
     }
 
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(30px); }
-      100% { opacity: 1; transform: translateY(0); }
+    /* STATIC LIST BELOW */
+    .testimonial-list {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .testimonial-card {
+      background-color: #11131c;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 8px rgba(247,147,26,0.3);
+      text-align: left;
+    }
+
+    .testimonial-card .rating {
+      color: gold;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .testimonial-card .reviewer {
+      color: #f7931a;
+      font-weight: bold;
     }
 
     footer {
@@ -141,121 +173,88 @@
     <a href="sell.html">Sell</a>
   </nav>
 
-  <section>
+  <header>
     <h1>About MWardcoin</h1>
+    <p>MWardcoin is a forward-thinking cryptocurrency project founded by MarkWoodward in collaboration with Sir Tom Jones. Our mission is to simplify Bitcoin investments, empower users, and ensure transparent transactions in every trade. Whether you're a new investor or an expert trader, MWardcoin ensures a seamless, trustworthy, and rewarding trading journey.</p>
+  </header>
 
-    <p>
-      <strong>MWardcoin</strong> is a visionary cryptocurrency platform built by 
-      <strong>Mark Woodward</strong> in collaboration with <strong>Sir Tom Jones</strong>. 
-      We strive to make digital investment simple, safe, and educational — for everyone, everywhere.
-    </p>
+  <section class="about">
+    <h2>Our Vision</h2>
+    <p>We aim to make cryptocurrency accessible to everyone by combining professional analytics, user security, and intuitive design. MWardcoin delivers powerful yet simple tools for monitoring Bitcoin prices, trading efficiently, and ensuring verified exchanges in real time. With continuous growth and innovation, MWardcoin stands as the bridge between traditional finance and the blockchain era.</p>
 
-    <p>
-      Our mission is to empower individuals through crypto literacy and transparent access to the digital economy. 
-      Whether you’re a beginner or an experienced investor, MWardcoin provides the tools, data, and support 
-      to help you thrive in this new financial frontier.
-    </p>
+    <h2>What Our Users Say</h2>
 
-    <p>
-      Every aspect of MWardcoin — from our tutorials to our trade interface — is designed with user trust, 
-      accuracy, and empowerment in mind. Together, we are building a future where crypto investment is 
-      understood and embraced with confidence.
-    </p>
+    <!-- SPINNING TESTIMONIALS -->
+    <div class="testimonial-wrapper">
+      <div class="testimonial-container">
+        <div class="testimonial">
+          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <p>“MWardcoin is the easiest crypto platform I’ve ever used. My trades were processed instantly and securely!”</p>
+          <p class="reviewer">— Sarah Thompson</p>
+        </div>
 
-    <h2>Our Core Values</h2>
-    <ul>
-      <li>💡 <strong>Transparency</strong> — Honest insights, real numbers, and open communication.</li>
-      <li>📈 <strong>Empowerment</strong> — We teach, not just trade.</li>
-      <li>🤝 <strong>Trust</strong> — Built through consistency and results.</li>
-      <li>🔒 <strong>Security</strong> — Your safety, our priority.</li>
-    </ul>
-  </section>
+        <div class="testimonial">
+          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <p>“Amazing customer support and real-time tracking. It’s everything I wanted in a Bitcoin investment site.”</p>
+          <p class="reviewer">— James White</p>
+        </div>
 
-  <section class="testimonials">
-    <h2>🌟 Verified Testimonials</h2>
+        <div class="testimonial">
+          <div class="rating">⭐⭐⭐⭐</div>
+          <p>“User-friendly, responsive, and reliable. MWardcoin has completely transformed how I trade.”</p>
+          <p class="reviewer">— Olivia Carter</p>
+        </div>
 
-    <div class="testimonial active">
-      <p>“MWardcoin made crypto simple to understand. I started with zero knowledge and within a week, I made my first trade confidently.”</p>
-      <div class="stars">★★★★★</div>
-      <strong>— Amelia Roberts <span class="verified">✔ Verified User</span></strong>
+        <div class="testimonial">
+          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <p>“This is the future of crypto trading! The site design, the speed, and transparency are unmatched.”</p>
+          <p class="reviewer">— Daniel Reed</p>
+        </div>
+
+        <div class="testimonial">
+          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <p>“I’ve used MWardcoin for months — smooth withdrawals and verified trades every time.”</p>
+          <p class="reviewer">— Amelia Brown</p>
+        </div>
+
+        <div class="testimonial">
+          <div class="rating">⭐⭐⭐⭐⭐</div>
+          <p>“Reliable, fast, and secure! I can track Bitcoin prices and sell anytime without stress.”</p>
+          <p class="reviewer">— Michael Scott</p>
+        </div>
+      </div>
     </div>
 
-    <div class="testimonial">
-      <p>“The MWardcoin team truly cares about user education. Their updates are clear and their tools are precise.”</p>
-      <div class="stars">★★★★★</div>
-      <strong>— David Mendez <span class="verified">✔ Verified Member</span></strong>
-    </div>
+    <!-- STATIC LIST OF TESTIMONIALS BELOW -->
+    <div class="testimonial-list">
+      <div class="testimonial-card">
+        <div class="rating">⭐⭐⭐⭐⭐</div>
+        <p>“MWardcoin made my first Bitcoin sale simple and smooth. Love the interface!”</p>
+        <p class="reviewer">— Emma Lewis</p>
+      </div>
 
-    <div class="testimonial">
-      <p>“I’ve used other crypto sites, but none match the transparency and accuracy I’ve seen here. MWardcoin is my daily go-to.”</p>
-      <div class="stars">★★★★★</div>
-      <strong>— Sophia Green <span class="verified">✔ Verified Trader</span></strong>
-    </div>
+      <div class="testimonial-card">
+        <div class="rating">⭐⭐⭐⭐</div>
+        <p>“Excellent updates and secure transactions. I always know my trades are safe.”</p>
+        <p class="reviewer">— Chris Johnson</p>
+      </div>
 
-    <div class="testimonial">
-      <p>“I love how MWardcoin explains complex trading concepts with simplicity. Their guides gave me the confidence I needed.”</p>
-      <div class="stars">★★★★☆</div>
-      <strong>— Michael Adams <span class="verified">✔ Verified Investor</span></strong>
-    </div>
+      <div class="testimonial-card">
+        <div class="rating">⭐⭐⭐⭐⭐</div>
+        <p>“Great communication and responsive design. The team is doing an amazing job.”</p>
+        <p class="reviewer">— Lily Parker</p>
+      </div>
 
-    <div class="testimonial">
-      <p>“Customer support is excellent and responsive. You can really tell they care about helping people succeed in crypto.”</p>
-      <div class="stars">★★★★★</div>
-      <strong>— Emily Carter <span class="verified">✔ Verified Member</span></strong>
-    </div>
-
-    <div class="testimonial">
-      <p>“MWardcoin combines knowledge and technology perfectly. My portfolio has grown thanks to their daily insights.”</p>
-      <div class="stars">★★★★★</div>
-      <strong>— Richard Owens <span class="verified">✔ Verified Investor</span></strong>
-    </div>
-
-    <div class="testimonial">
-      <p>“Very professional and reliable platform. The security and simplicity are exactly what the crypto world needs.”</p>
-      <div class="stars">★★★★☆</div>
-      <strong>— Olivia Wright <span class="verified">✔ Verified User</span></strong>
-    </div>
-
-    <div class="testimonial">
-      <p>“The learning resources are amazing. I finally understand blockchain and can make smart decisions on my own.”</p>
-      <div class="stars">★★★★★</div>
-      <strong>— Ethan Miller <span class="verified">✔ Verified Member</span></strong>
-    </div>
-
-    <div class="testimonial">
-      <p>“MWardcoin doesn’t just talk about transparency — they prove it. I love how every transaction is clear and traceable.”</p>
-      <div class="stars">★★★★★</div>
-      <strong>— Sarah Mitchell <span class="verified">✔ Verified User</span></strong>
-    </div>
-
-    <div class="testimonial">
-      <p>“Highly recommended for anyone serious about understanding crypto. It’s not just a site, it’s a smart investment partner.”</p>
-      <div class="stars">★★★★★</div>
-      <strong>— Daniel Brooks <span class="verified">✔ Verified Trader</span></strong>
+      <div class="testimonial-card">
+        <div class="rating">⭐⭐⭐⭐⭐</div>
+        <p>“I’ve invited my friends to join MWardcoin — it’s the most trusted platform I’ve seen.”</p>
+        <p class="reviewer">— Robert Evans</p>
+      </div>
     </div>
   </section>
 
   <footer>
     © 2025 <span>MWardcoin</span> — Created by MarkWoodward in collaboration with Sir Tom Jones.
   </footer>
-
-  <script>
-    // JavaScript for rotating testimonials
-    let index = 0;
-    const testimonials = document.querySelectorAll(".testimonial");
-    const total = testimonials.length;
-    let interval = setInterval(showNext, 6000); // Change every 6 seconds
-
-    function showNext() {
-      testimonials[index].classList.remove("active");
-      index = (index + 1) % total;
-      testimonials[index].classList.add("active");
-    }
-
-    // Pause on hover
-    const container = document.querySelector(".testimonials");
-    container.addEventListener("mouseenter", () => clearInterval(interval));
-    container.addEventListener("mouseleave", () => interval = setInterval(showNext, 6000));
-  </script>
 </body>
 </html>
