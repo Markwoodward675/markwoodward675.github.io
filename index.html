@@ -1,25 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MWardcoin – Home</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MWardcoin | Home</title>
   <style>
-    body { background:#0b1020; color:white; font-family:Arial; text-align:center; margin:0; }
-    nav { background:#111; padding:15px; }
-    nav a { color:white; margin:10px; text-decoration:none; font-size:18px; }
-    nav a:hover { color:#f7931a; }
+    /* General Styles */
+    body {
+      background-color: #0b0e17;
+      color: #fff;
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    /* Navigation Bar */
+    nav {
+      background-color: #11131c;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 20px;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #f7931a; /* Bitcoin orange */
+    }
+
+    /* Hero Section */
+    header {
+      padding: 80px 20px;
+    }
+
+    header h1 {
+      font-size: 42px;
+      color: #f7931a;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 18px;
+      color: #d0d0d0;
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      background-color: #f7931a;
+      color: #fff;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-size: 16px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #ffae42;
+    }
+
+    /* Floating Bitcoin Background Animation */
+    .bitcoin {
+      position: fixed;
+      width: 40px;
+      height: 40px;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg') no-repeat center;
+      background-size: contain;
+      animation: float 15s infinite linear;
+      opacity: 0.2;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-50px) rotate(180deg); }
+      100% { transform: translateY(0) rotate(360deg); }
+    }
+
+    /* Footer */
+    footer {
+      background-color: #11131c;
+      padding: 20px 0;
+      color: #888;
+      font-size: 14px;
+      margin-top: 60px;
+    }
+
+    footer span {
+      color: #f7931a;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Navigation -->
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </nav>
 
-  <h1>Welcome to MWardcoin</h1>
-  <p>Welcome to the Future of Finance.
-Stay ahead with real-time Bitcoin updates, expert insights, and trusted investment strategies. Whether you’re a seasoned investor or just getting started, we bring you the knowledge and tools to grow your crypto portfolio with confidence.</p>
+  <!-- Hero Section -->
+  <header>
+    <h1>Welcome to MWardcoin</h1>
+    <p>
+      The official platform by <strong>MarkWoodward675</strong>, empowering new investors 
+      and traders with insights, live data, and trusted resources in the world of crypto.
+    </p>
+    <a href="sell.html" class="btn">💰 Sell MWardcoin</a>
+  </header>
+
+  <!-- Floating Bitcoin Icons -->
+  <div class="bitcoin" style="top:10%; left:10%; animation-delay:0s;"></div>
+  <div class="bitcoin" style="top:30%; left:70%; animation-delay:2s;"></div>
+  <div class="bitcoin" style="top:60%; left:40%; animation-delay:4s;"></div>
+  <div class="bitcoin" style="top:80%; left:20%; animation-delay:6s;"></div>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 <span>MWardcoin</span> — Created by MarkWoodward in collaboration with Sir Tom Jones.
+  </footer>
+
 </body>
 </html>
