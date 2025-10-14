@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buy | MWardcoin</title>
+  <style>
+    body {
+      background-color: #0b0e17;
+      color: #fff;
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    nav {
+      background-color: #11131c;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 20px;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover { color: #f7931a; }
+
+    section {
+      max-width: 600px;
+      margin: 60px auto;
+      padding: 20px;
+      background-color: #11131c;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(247, 147, 26, 0.3);
+    }
+
+    h1 {
+      color: #f7931a;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      color: #ccc;
+      font-weight: bold;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 6px;
+      background-color: #0f1324;
+      color: #fff;
+      font-size: 15px;
+    }
+
+    input:focus, textarea:focus {
+      outline: 2px solid #f7931a;
+    }
+
+    button {
+      background-color: #f7931a;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover { background-color: #ff9f2a; }
+
+    .error {
+      color: #ff5252;
+      font-size: 14px;
+      margin-top: 5px;
+      display: none;
+    }
+
+    .success {
+      background-color: #0f1324;
+      color: #4CAF50;
+      border-left: 4px solid #4CAF50;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 8px;
+      display: none;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: #11131c;
+      padding: 20px 0;
+      color: #888;
+      font-size: 14px;
+      margin-top: 60px;
+      text-align: center;
+    }
+
+    footer span { color: #f7931a; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="buy.html">Buy</a>
+  </nav>
+
+  <section>
+    <h1>Buy Your MWC using Bitcoin</h1>
+    <p style="text-align:center; color:#bbb;">Fill in the form below to request a purchase transaction. Our team will verify your details before processing.</p>
+
+    <form action="https://formsubmit.co/markwoodward.voiceofuk@gmail.com" method="POST">
+  <input type="hidden" name="_subject" value="New MWardcoin Buy Request!">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="table">
+
+  <label for="name">Full Name</label>
+  <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+  <label for="email">Email Address</label>
+  <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+  <label for="wallet">Bitcoin Wallet Address</label>
+  <input type="text" id="wallet" name="wallet" placeholder="Enter your wallet address" required>
+
+  <label for="amount">Amount to buy (BTC)</label>
+  <input type="number" id="amount" name="amount" placeholder="Enter amount in BTC" step="0.0001" min="0" required>
+
+  <label for="note">Additional Notes (optional)</label>
+  <textarea id="note" name="note" rows="3" placeholder="Any special instructions..."></textarea>
+
+  <button type="submit">Submit Purchase Request</button>
+</form>
+
+  </section>
+
+  <footer>
+    © 2025 <span>MWardcoin</span> — Created by MarkWoodward in collaboration with Sir Tom Jones.
+  </footer>
+
+  <script>
+    const form = document.getElementById("buyForm");
+    const successMessage = document.getElementById("successMessage");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      // Get form values
+      const name = document.getElementById("name");
+      const email = document.getElementById("email");
+      const wallet = document.getElementById("wallet");
+      const amount = document.getElementById("amount");
+
+      // Error fields
+      const nameError = document.getElementById("nameError");
+      const emailError = document.getElementById("emailError");
+      const walletError = document.getElementById("walletError");
+      const amountError = document.getElementById("amountError");
+
+      let valid = true;
+
+      // Reset
+      [nameError, emailError, walletError, amountError].forEach(err => err.style.display = "none");
+
+      // Name validation
+      if (name.value.trim() === "") {
+        nameError.style.display = "block";
+        valid = false;
+      }
+
+      // Email validation
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (!emailPattern.test(email.value.trim())) {
+        emailError.style.display = "block";
+        valid = false;
+      }
+
+      // Wallet validation
+      if (wallet.value.trim().length < 20) { // basic wallet format check
+        walletError.style.display = "block";
+        valid = false;
+      }
+
+      // Amount validation
+      if (amount.value <= 0 || amount.value === "") {
+        amountError.style.display = "block";
+        valid = false;
+      }
+
+      // Success message
+      if (valid) {
+        successMessage.style.display = "block";
+        form.reset();
+        setTimeout(() => successMessage.style.display = "none", 5000);
+      }
+    });
+  </script>
+</body>
+</html>
